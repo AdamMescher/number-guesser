@@ -1,0 +1,7 @@
+node_modules/
+rules/
+.eslint-local.json
+.eslintrc.js
+package-lock.json
+.DS_Store
+ #something

@@ -1,0 +1,220 @@
+/* ------------------------------------------------
+
+  ---------------------
+  - TABLE OF CONTENTS -
+  ---------------------
+
+      * WHITESPACE REMOVAL
+      * HEADER
+      * MAIN
+        - Error Message
+        - User Input / Top Buttons
+        - Guess Display
+        - Reset Button
+
+  ------------------
+  -  COLOR PALETTE -
+  ------------------
+
+      #090909 - Almost Black
+      #ED458B - Header Pink
+      #EB008B - Pink
+      #FFFFFF - White
+      #404041 - Dark Gray
+      #D0D2D3 - Light Gray
+
+------------------------------------------------ */
+
+/* --------------------
+    WHITESPACE REMOVAL
+----------------------- */
+
+/* Removes whitespace on left and right side of header */
+body {
+  margin: 0;
+}
+
+/* Removes whitespace on top of header */
+h1 {
+  margin-top: 0;
+}
+
+/* -----------
+    HEADER
+----------- */
+
+.header-title {
+  background-color: #404041;
+  color: #E6E7E8;
+  font-weight: 300;
+  text-align: center;
+  padding: 20px;
+  font-size: 60px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.pink-header {
+  color: #ED458B;
+}
+
+/* --------
+    MAIN
+--------- */
+
+main {
+  width: 100%;
+}
+
+h1, h2, input, button, p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+button {
+  color: #FFFFFF;
+  background-color: #929497;
+  width: 23%;
+  border: none;
+  border-width: 2px 4px;
+  border-radius: 40px;
+}
+
+button:hover {
+  background-color: #EB008B;
+}
+
+button:disabled {
+  background-color: #D0D2D3;
+}
+
+fieldset {
+  border: none;
+}
+
+.pink-body {
+  color: #EB008B;
+}
+
+/* --- Error Message --- */
+
+.error-message-display {
+  font-size: 2em;
+  visibility: hidden;
+  margin-bottom: 30px;
+}
+
+.error-message {
+  color: white;
+  font-size: .75em;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  background-color: FireBrick;
+  padding: 1%;
+  margin: -1%;
+}
+
+
+/* --- User Input / Top Buttons --- */
+
+.min-max-input {
+
+}
+
+.minimum-header, .maximum-header {
+  color: white;
+}
+
+.expanded {
+
+}
+
+.collapsed {
+
+}
+
+.range-header {
+  color: white;
+  font-size: 40px;
+  margin: 0;
+  padding-bottom: 20px;
+}
+.range-inputs {
+  border: black;
+  padding: 20px;
+  margin: auto;
+  font-size: 16px;
+  text-align: center;
+  visibility: hidden;
+}
+
+.form-input-and-top-buttons {
+  display: absolute;
+  text-align: center;
+}
+
+.min-input, .max-input {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+}
+
+.button-set-range {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.form-input {
+  font-size: 1.5em;
+  margin-top: 1em;
+  width: 50%;
+}
+
+.top-buttons {
+  /*display: absolute;*/
+  margin: auto;
+}
+
+.top-buttons button {
+  margin-top: 1.5em;
+  font-size: 1.5em;
+}
+
+.button-clear {
+    margin-left: 4%;
+  }
+
+/* --- Guess Display --- */
+
+.last-guess, .guess-outcome-text {
+  font-size: 2em;
+  text-align: center;
+}
+
+.user-guess-display {
+  font-size: 15em;
+  text-align: center;
+  margin: -70px;
+  visibility: hidden;
+}
+
+.guess-outcome-text {
+  visibility: hidden;
+}
+
+/* --- Reset Button --- */
+
+.reset {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+
+.button-reset {
+  font-size: 1.2em;
+  width: 50%;
+}
