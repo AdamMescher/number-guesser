@@ -24,7 +24,7 @@
       #FFFFFF - White
       #404041 - Dark Gray
       #D0D2D3 - Light Gray
-      #62BBC1 - Blue
+       - Blue
 
       https://coolors.co/eb008b-0a2463-3e92cc-fffaff-1e1b18
 
@@ -107,13 +107,14 @@ fieldset {
 
 .win-count-display {
   font-size: 30px;
-  margin: -65px 0px 0px 0px;
   visibility: hidden;
-  background-color: #EB008B;
   color: white;
   width: 50%;
   margin-left: 50%;
   align: right;
+  padding: 3px;
+  z-index: -1;
+  margin-top: -5px;
 }
 
 /* --- Error Message --- */
@@ -122,35 +123,23 @@ fieldset {
   height: 35px;
   font-size: 20px;
   visibility: hidden;
-  margin-bottom: 30px;
 }
 
 .error-message {
   color: white;
-  font-size: 20px;
+  font-size: 30px;
   text-align: center;
   display: inline-block;
   width: 50%;
   background-color: FireBrick;
-  padding: 1%;
-  margin: -1%;
+  padding: 3px;
 }
 
 /* --- User Input / Top Buttons --- */
 
-.minimum-header, .maximum-header {
-  color: white;
-}
-
-.range-header {
-  color: white;
-  font-size: 40px;
-  margin: 0;
-  padding-bottom: 20px;
-}
 .range-inputs {
   border: black;
-  margin-top:
+  margin-top: 10px;
   margin: auto;
   font-size: 16px;
   text-align: center;
@@ -158,18 +147,18 @@ fieldset {
 }
 
 .form-input-and-top-buttons {
-  display: absolute;
   text-align: center;
 }
 
 .min-input, .max-input {
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
+  margin-top: 20px;
 }
 
 .button-set-range {
   display: block;
-  margin: auto;9
+  margin: auto;
   margin-top: 20px;
   font-size: 18px;
 }
@@ -181,7 +170,6 @@ fieldset {
 }
 
 .top-buttons {
-  /*display: absolute;*/
   margin: auto;
 }
 
@@ -197,14 +185,18 @@ fieldset {
 /* --- Guess Display --- */
 
 .last-guess, .guess-outcome-text {
-  font-size: 2em;
+  font-size: 30px;
   text-align: center;
+}
+
+.last-guess {
+  margin-top: -5px;
 }
 
 .user-guess-display {
   font-size: 15em;
   text-align: center;
-  margin: -70px;
+  margin: -60px;
   visibility: hidden;
 }
 
@@ -216,7 +208,6 @@ fieldset {
 
 .reset {
   text-align: center;
-  margin-bottom: 2em;
 }
 
 
