@@ -8,7 +8,9 @@
       * HEADER
       * MAIN
         - Error Message
-        - User Input / Top Buttons
+        - Win Count
+        - User GuessInput / Top Buttons
+        - Min / Max Input
         - Guess Display
         - Reset Button
 
@@ -18,10 +20,13 @@
 
       #090909 - Almost Black
       #ED458B - Header Pink
-      #EB008B - Pink
+      #EB008B - Body Pink
       #FFFFFF - White
       #404041 - Dark Gray
       #D0D2D3 - Light Gray
+      #62BBC1 - Blue
+
+      https://coolors.co/eb008b-0a2463-3e92cc-fffaff-1e1b18
 
 ------------------------------------------------ */
 
@@ -98,42 +103,43 @@ fieldset {
   color: #EB008B;
 }
 
+/* Win Count */
+
+.win-count-display {
+  font-size: 30px;
+  margin: -65px 0px 0px 0px;
+  visibility: hidden;
+  background-color: #EB008B;
+  color: white;
+  width: 50%;
+  margin-left: 50%;
+  align: right;
+}
+
 /* --- Error Message --- */
 
 .error-message-display {
-  font-size: 2em;
+  height: 35px;
+  font-size: 20px;
   visibility: hidden;
   margin-bottom: 30px;
 }
 
 .error-message {
   color: white;
-  font-size: .75em;
+  font-size: 20px;
   text-align: center;
   display: inline-block;
-  width: 100%;
+  width: 50%;
   background-color: FireBrick;
   padding: 1%;
   margin: -1%;
 }
 
-
 /* --- User Input / Top Buttons --- */
-
-.min-max-input {
-
-}
 
 .minimum-header, .maximum-header {
   color: white;
-}
-
-.expanded {
-
-}
-
-.collapsed {
-
 }
 
 .range-header {
@@ -144,7 +150,7 @@ fieldset {
 }
 .range-inputs {
   border: black;
-  padding: 20px;
+  margin-top:
   margin: auto;
   font-size: 16px;
   text-align: center;
@@ -163,14 +169,14 @@ fieldset {
 
 .button-set-range {
   display: block;
-  margin: auto;
+  margin: auto;9
   margin-top: 20px;
   font-size: 18px;
 }
 
 .form-input {
-  font-size: 1.5em;
-  margin-top: 1em;
+  font-size: 25px;;
+  margin-top: 10px;
   width: 50%;
 }
 
@@ -180,8 +186,8 @@ fieldset {
 }
 
 .top-buttons button {
-  margin-top: 1.5em;
-  font-size: 1.5em;
+  margin-top: 10px;
+  font-size: 24px;
 }
 
 .button-clear {

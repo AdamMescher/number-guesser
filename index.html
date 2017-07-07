@@ -22,11 +22,11 @@
     </section>
 
     <section class="form-input-and-top-buttons">
-      <p class="pink-body">Wins: <span class="win-count" id="winCount">0</span></p>
+      <p class="win-count-display bold" id="winCountDisplay">Wins: <span class="win-count-counter" id="winCountCounter">0</span></p>
       <form id="form">
         <fieldset>
             <!-- <legend></legend> -->
-            <input class="form-input" type="text" id="formInput" maxlength="4" placeholder="Enter your guess" required />
+            <input class="form-input" type="text" id="formInput" placeholder="Enter your guess" required />
           </fieldset>
       </form>
 
@@ -35,14 +35,14 @@
         <button class="button-clear" id="buttonClear" disabled>Clear</button>
       </div>
     </section>
+
     <section>
-      <form ="min-max-input">
+      <form ="min-max-input" id="minMaxInput">
         <fieldset>
           <!-- <legend class=min-and-max-fieldset>Minimum and maximum</legend> -->
           <div class="range-inputs" id="range-inputs">
-            <h2 class="range-header bold expanded">Range</h2>
-            Min <input class="min-input" id="minInput" type="text" placeholder="Min" value="1" />
-            Max <input class="max-input" id="maxInput" type="text" placeholder="Max" value="100" />
+            <input class="min-input" id="minInput" type="text" placeholder="Min" value="1" />
+            <input class="max-input" id="maxInput" type="text" placeholder="Max" value="100" />
             <button class="button-set-range" id="buttonSetRange">Set Range</button>
           </div>
         </fieldset>
@@ -55,12 +55,14 @@
       <p class="guess-outcome-text" id="resultText">that is</p>
     </section>
 
+
+
     <section class="reset">
         <button class="button-reset" id="buttonReset" disabled>Reset</button>
     </section>
   </main>
 
-  <script src="scripts2.js"></script>
+  <script src="scripts.js"></script>
 </body>
 
 </html>

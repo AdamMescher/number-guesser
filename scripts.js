@@ -1,16 +1,21 @@
 var winCountValue = document.getElementById('winCount');
+var errorMessageDisplay = document.getElementById('errorMessageDisplay');
 
 var lastGuessText = document.getElementById( 'lastGuessText' );
 var guessDisplay = document.getElementById( 'guess' );
 var resultText = document.getElementById( 'resultText' );
 
-var minInputVisible = document.getElementById('minInput');
-var maxInputVisible = document.getElementById('maxInput');
+var winCountDisplay = document.getElementById( 'winCountDisplay' );
+var winCountCounter = document.getElementById( 'winCountCounter')
+
+var minMaxInput = document.getElementById('range-inputs');
+var minInputVisible = document.getElementById( 'minInput' );
+var maxInputVisible = document.getElementById( 'maxInput' );
 
 var minInputValue = document.getElementById( 'minInput' ).value;
 var maxInputValue = document.getElementById( 'maxInput' ).value;
 
-var setRangeButton = document.getElementById('buttonSetRange');
+var setRangeButton = document.getElementById( 'buttonSetRange' );
 var guessButton = document.getElementById( 'buttonGuess' );
 var clearButton = document.getElementById( 'buttonClear' );
 var resetButton = document.getElementById( 'buttonReset' );
@@ -24,7 +29,6 @@ setRangeButton.addEventListener( 'click', setRange );
 // Default level values
 var winCount = 0;
 
-
 // Default range values
 var minInput = 1;
 var maxInput = 100;
@@ -36,7 +40,7 @@ console.log("Solution: ", solution)
 // = Generate Random Number =
 // ==========================
 
-function generateRandomNumber( min, max ) {
+function generateRandomNumber ( min, max ) {
   return Math.floor( Math.random() * max + 1 );
 }
 
@@ -44,7 +48,7 @@ function generateRandomNumber( min, max ) {
 // = Set Range =
 // =============
 
-function setRange(){
+function setRange () {
   event.preventDefault();
 
   minInputValue = document.getElementById( 'minInput' ).value;
@@ -56,7 +60,7 @@ function setRange(){
   solution = generateRandomNumber( minInput, maxInput );
 }
 
-function expandRange() {
+function expandRange () {
   minInput -= 10;
   maxInput += 10;
 }
@@ -67,46 +71,27 @@ function increaseWinCount () {
 }
 
 // ====================
-// = Display and Hide =
+// = Display, Hide, Disable =
 // ====================
+function enableButton ( button ){
+  button.disabled = false;
+}
 
-function showElement(element) {
+function disableButton ( button ) {
+  button.disabled = true;
+}
+
+function showElement ( element ) {
   element.style.visibility = "visible";
 }
 
-function hideElement(element) {
+function hideElement ( element ) {
   element.style.visibility = "hidden";
 }
 
-function showGuessDisplay() {
-
+function changeText (element, value) {
+  element.innerText = value;
 }
-
-function hideGuessDisplay() {
-
-}
-
-function showRangeDisplay() {
-  var display = document.getElementById('range-inputs');
-  display.style.visibility = "visible";
-}
-
-function hideRangeDisplay() {
-  var display = document.getElementById('range-inputs');
-  display.style.visibility = "hidden";
-}
-
-function showErrorMessageDisplay() {
-  var display = document.getElementById('');
-  display.style.visibility = "visible";
-
-}
-
-function hideErrorMessageDisplay() {
-  var display = document.getElementById('');
-  // display.style.visibility = "visible";
-}
-
 
 
 // ================
@@ -123,36 +108,38 @@ function checkGuess() {
   var verified = verifyInput( guessInputValue, minInput, maxInput );
 
   if ( verified === true ) {
+    showElement(lastGuessText);
+    changeText(lastGuessText, "Your last guess was");
 
-    hideErrorMessageDisplay();
-    lastGuessText.innerText = "Your last guess was";
+    showElement(guessDisplay);
+    changeText(guessDisplay, guessInputValue);
 
-    guessDisplay.style.visibility = "visible";
-    guessDisplay.innerText = guessInputValue;
+    showElement(resultText);
 
-    resultText.style.visibility = "visible";
+    enableButton(resetButton);
 
-    resetButton.disabled = false;
-
-    if ( parsed === solution ) {
-      resultText.innerText = "BOOM!";
-      win();
-    } else if ( parsed > solution ) {
-      resultText.innerText = "That is too high";
-    } else if ( parsed < solution ) {
-      resultText.innerText = "That is too low";
-    }
+      if ( parsed === solution ) {
+        changeText(resultText, "BOOM!");
+        win();
+      } else if ( parsed > solution ) {
+        changeText(resultText, "That is too high!");
+      } else if ( parsed < solution ) {
+        changeText(resultText, "That is too low");
+      }
   }
 }
 
 function win() {
   // Make game more difficult
   expandRange();
-  // Generate new solution
+  console.log("New Range: ", minInput, maxInput)
   solution = generateRandomNumber(minInput, maxInput);
-  console.log(solution);
-  // Toggle Range
-  showRangeDisplay();
+  console.log("New Solution: ", solution);
+  winCount += 1;
+  changeText(winCountCounter, winCount);
+  showElement(winCountDisplay);
+
+  showElement(minMaxInput);
 
   // set input values to new range
   minInputVisible.value = minInput;
@@ -160,7 +147,7 @@ function win() {
 
 
   // User sees how far they've gone
-  winCount += 1;
+
 }
 
 function verifyInput( input, min, max ) {
@@ -175,33 +162,34 @@ function verifyInput( input, min, max ) {
 
   if ( isNaN(parsed) === true) {
     if( input.length === 0) {
-      showErrorMessage();
+      showElement(errorMessageDisplay);
       errorCause.innerText = emptyStringErrorText;
     } else {
-      showErrorMessage();
+      showElement(errorMessageDisplay);
       errorCause.innerText = notANumberErrorText;
     }
   } else if ( isNaN(parsed) === false){
     console.log("Min: ", min, "Max: ", max)
     if ( input < min || input > max ) {
       console.log("Input: ", input, "Min: ", min, "Max: ", max);
-      errorMessageDisplay.style.visibility = "visible";
-      errorCause.innerText = outOfRangeErrorText;
+      showElement(errorMessageDisplay);
+      changeText(errorCause, outOfRangeErrorText);
       return false;
     } else {
       return true;
+      }
     }
   }
-}
+
 // ================
 // = Clear Button =
 // ================
 
 formInput.addEventListener('input', function() {
   if (formInput.value === ""){
-    clearButton.disabled = true;
+    disableButton(clearButton);
   } else {
-    clearButton.disabled = false;
+    enableButton(clearButton);
   }
 });
 
@@ -209,11 +197,8 @@ formInput.addEventListener('input', function() {
 function clearGuess(event) {
   var form = document.getElementById('form');
   form.reset();
-  clearButton.disabled = true;
+  disableButton(clearButton);
 }
-
-
-
 
 // ================
 // = Reset Button =
@@ -222,10 +207,13 @@ function clearGuess(event) {
 // Resets the gameboard after button on click
 function resetGuess(event) {
   lastGuessText.innerText = "You haven't made a guess yet";
-  document.getElementById( 'guess' ).style.visibility = 'hidden';
-  document.getElementById( 'resultText' ).style.visibility = 'hidden';
-  resetButton.disabled = true;
-  generateRandomNumber(minInput, maxInput);
-  hideRangeDisplay();
-  clearButton.disabled = true;
+  hideElement(guessDisplay);
+  hideElement(resultText);
+  disableButton(resetButton);
+  minInput = 1;
+  maxInput = 100;
+  generateRandomNumber(1, 100);
+  hideElement(minMaxInput);
+  hideElement(winCountDisplay);
+  winCount = 0;
 }
