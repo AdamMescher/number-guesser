@@ -69,9 +69,10 @@ function increaseWinCount () {
   changeText(winCountCounter, winCount);
 }
 
-// ====================
+// ==========================
 // = Display, Hide, Disable =
-// ====================
+// ==========================
+
 function enableButton ( button ){
   button.disabled = false;
 }
@@ -101,7 +102,6 @@ function resetWinCount () {
   winCount = 0;
 }
 
-
 // ================
 // = Guess Button =
 // ================
@@ -116,6 +116,8 @@ function checkGuess() {
   var verified = verifyInput( guessInputValue, minInput, maxInput );
 
   if ( verified === true ) {
+    hideElement(errorMessageDisplay);
+    
     showElement(lastGuessText);
     changeText(lastGuessText, "Your last guess was");
 
